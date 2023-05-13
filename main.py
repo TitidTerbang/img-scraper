@@ -1,27 +1,24 @@
 from bs4 import BeautifulSoup
 import requests
 
-# website = 'https://imagehaha.com/1j0dlmxpfuyx/1228209.jpg.html'
 website = 'https://nsfwx.pics/4650.html'
 result = requests.get(website)
 content = result.text
 
 soup = BeautifulSoup(content, 'lxml')
 # image = soup.img['src']
-images = soup.find_all('a')
+images = soup.find_all('img')
 # print(images)
 
 imagesrc = []
 for image in images:
-    imagesrc.append(image['href'])
-# print(imagesrc)
+    imagesrc.append(image['src'])
+print(imagesrc)
 
-filterimg = [filt for filt in imagesrc if 'https://imagehaha.com/' in filt]
-print(filterimg)
-# for image in imagesrc:
-#     webs = requests.get(image)
-#     filename = 'bro/' + image.split('/')[-1]
-#     open(filename, 'wb').write(webs.content)
+for image in imagesrc:
+    webs = requests.get(image)
+    filename = 'bro/' + image.split('/')[-1]
+    open(filename, 'wb').write(webs.content)
 
 # for image in images:
 #     webs = requests.get(image)
