@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-# website = 'https://imagehaha.com/1j0dlmxpfuyx/1228209.jpg.html'
+# the website
 website = 'https://nsfwx.pics/4650.html'
 result = requests.get(website)
 content = result.text
@@ -13,6 +13,7 @@ imagesrc = []
 for image in images:
     imagesrc.append(image['href'])
 
+#filter the source
 filterimg = [filt for filt in imagesrc if 'https://imagehaha.com/' in filt]
 filterimg_str = '\n'.join(filterimg)
 linetunnel = filterimg_str.split()
