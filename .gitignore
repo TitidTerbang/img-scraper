@@ -1,3 +1,5 @@
 env
 bro
 test.py
+.gitignore
+.idea
