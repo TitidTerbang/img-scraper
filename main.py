@@ -2,13 +2,14 @@ from bs4 import BeautifulSoup
 import requests
 
 # the website
-website = 'https://nsfwx.pics/4650.html'
+website = ''
 result = requests.get(website)
+print(result.status_code)
 content = result.text
 
 soup = BeautifulSoup(content, 'lxml')
 images = soup.find_all('a')
-
+print(images)
 imagesrc = []
 for image in images:
     imagesrc.append(image['href'])
